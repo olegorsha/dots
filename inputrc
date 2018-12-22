@@ -25,8 +25,8 @@ $if mode=vi
   "\e.": yank-last-arg
 
   #"\e_": '\C-a "$($_\C-e)"\C-a'
-   "\100": backward-word
-   "\101": kill-word
-   "\e_" : '.\/\e.\100\C-h\C-e'
+  "\100": backward-word
+  "\101": kill-word
+  "\e_" : '.\/\e.\100\C-h\C-e'
 
 $endif
