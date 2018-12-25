@@ -21,6 +21,7 @@ $if mode=vi
   "\C-p": previous-history
   "\C-w": backward-kill-word
   "\C-h": backward-delete-char
+  "\eh": backward-delete-char
 
   "\e.": yank-last-arg
   "\e_": '@.//\C-h\C-e'

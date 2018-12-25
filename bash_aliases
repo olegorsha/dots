@@ -23,6 +23,16 @@ ffind(){
   find . -name "$@"
 }
 
+lpass_a(){
+  #Select and copy password to clipboard from lastpass
+  lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+}
+
+vs(){
+    #List all vagrant boxes available in the system including its status, and try to access the selected one via ssh
+    cd $(cat ~/.vagrant.d/data/machine-index/index | jq '.machines[] | {name, vagrantfile_path, state}' | jq '.name + "," + .state  + "," + .vagrantfile_path'| sed 's/^"\(.*\)"$/\1/'| column -s, -t | sort -rk 2 | fzf | awk '{print $3}'); vagrant ssh
+}
+
 alias dus='du -s * | sort -nr | cut -f2 | xargs du -sh'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -54,4 +64,4 @@ alias kdel='kubectl delete -f'
 alias kcdel='kubectl delete configmap'
 alias kd='kubectl describe'
 alias kl='kubectl logs'
-
+alias lp='lpass_a'
