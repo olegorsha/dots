@@ -25,4 +25,5 @@ $if mode=vi
 
   "\e.": yank-last-arg
   "\e_": '@.//\C-h\C-e'
+  "jk": vi-movement-mode
 $endif

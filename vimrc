@@ -50,7 +50,7 @@ Plug 'joedicastro/unite-cmdmatch'
 " Syntax {{{
 
 Plug 'elzr/vim-json', {'filetypes' : 'json'}
-Plug 'chase/vim-ansible-yaml', {'autoload': {'filetypes': ['ansible']}}
+Plug 'pearofducks/ansible-vim', {'autoload': {'filetypes': ['yaml.ansible']}}
 Plug 'lepture/vim-jinja', {'autoload': {'filetypes': ['jinja']}}
 Plug 'scrooloose/syntastic'
 
@@ -103,7 +103,7 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 " Deoplete {{{
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 
 call deoplete#custom#source('omni', 'functions', {
       \ 'python':  'pythoncomplete#Complete',
@@ -175,6 +175,8 @@ let g:neomru#directory_mru_path = $HOME.'/.vim/tmp/neomru/directory'
 
 let mapleader=','
 let maplocalleader= ' '
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 " }}}
 
@@ -518,6 +520,7 @@ augroup filetype_options
   au BufWinEnter *.md set ft=markdown
   au FileType markdown syn clear markdownItalic | syn clear markdownError
   au BufWinEnter *.conf set ft=conf
+  au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 augroup END
 " }}}
 
