@@ -88,3 +88,9 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/os/.sdkman"
 [[ -s "/home/os/.sdkman/bin/sdkman-init.sh" ]] && source "/home/os/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+
+export PATH=$PATH:/snap/bin

@@ -148,20 +148,6 @@ let g:vimfiler_data_directory = $HOME.'/.vim/tmp/vimfiler'
 
 " }}}
 
-" vimux {{{
-
-let g:VimuxUseNearestPane = 1
-
-map <Leader>rr :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;python '.bufname("%"))<CR>
-map <Leader>rt :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;time " python '.bufname("%"))<CR>
-
-map <Leader>rc :VimuxPromptCommand<CR>
-map <Leader>rl :VimuxRunLastCommand<CR>
-map <Leader>rs :VimuxInterruptRunner<CR>
-map <Leader>ri :VimuxInspectRunner<CR>
-map <Leader>rq :VimuxCloseRunner<CR>
-
-" }}}
 " neomru {{{
 
 let g:neomru#file_mru_path = $HOME.'/.vim/tmp/neomru/file'
@@ -177,6 +163,22 @@ let mapleader=','
 let maplocalleader= ' '
 inoremap jk <esc>
 inoremap <esc> <nop>
+
+" }}}
+
+" vimux {{{
+
+let g:VimuxUseNearestPane = 1
+
+map <Leader>rr :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;python '.bufname("%"))<CR>
+map <Leader>rb :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;bash '.bufname("%"))<CR>
+map <Leader>rt :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;time " python '.bufname("%"))<CR>
+
+map <Leader>rc :VimuxPromptCommand<CR>
+map <Leader>rl :VimuxRunLastCommand<CR>
+map <Leader>rs :VimuxInterruptRunner<CR>
+map <Leader>ri :VimuxInspectRunner<CR>
+map <Leader>rq :VimuxCloseRunner<CR>
 
 " }}}
 
@@ -394,6 +396,22 @@ endif
 " Quick exiting without save {{{
 
 nnoremap <Leader>qq :qa!<CR>
+
+" }}}
+
+
+" Automatically set/unset Vim's paste mode when you paste {{{
+
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
 
 " }}}
 
