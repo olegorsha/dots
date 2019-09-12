@@ -402,6 +402,8 @@ nnoremap <Leader>qq :qa!<CR>
 
 " Automatically set/unset Vim's paste mode when you paste {{{
 
+set pastetoggle=<F3>
+
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
 
