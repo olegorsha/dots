@@ -264,6 +264,23 @@ let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
 
 " Mappings & Commands {{{
 
+" Plugin {{{
+
+" vimux {{{
+
+let g:VimuxUseNearestPane = 1
+
+map <Leader>rr :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;python '.bufname("%"))<CR>
+map <Leader>rt :call VimuxRunCommand('clear;cd '.expand("%:p:h") .' ;time python '.bufname("%"))<CR>
+
+map <Leader>rc :VimuxPromptCommand<CR>
+map <Leader>rl :VimuxRunLastCommand<CR>
+map <Leader>rs :VimuxInterruptRunner<CR>
+map <Leader>ri :VimuxInspectRunner<CR>
+map <Leader>rq :VimuxCloseRunner<CR>
+
+" }}}
+" }}}
 " New windows {{{
 
 nnoremap <Leader>v <C-w>v
